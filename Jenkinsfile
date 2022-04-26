@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 
 pipeline{
+  
     options{
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '2')
         disableConcurrentBuilds()
