@@ -1,12 +1,15 @@
 #!/usr/bin/env groovy
 
 pipeline {
-    agent: any
+    agent {
+        node {
+            label 'master'
+        }
+    }
     options{
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '2')
         disableConcurrentBuilds()
         timeout(time: 1, unit: 'HOURS')
-        timestamps
     }
     stages {
         stage("Build & Test"){
