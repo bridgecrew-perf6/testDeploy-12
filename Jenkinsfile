@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-Pipeline{
+pipeline {
     agent: any
     options{
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '2')
@@ -8,7 +8,7 @@ Pipeline{
         timeout(time: 1, unit: 'HOURS')
         timestamps
     }
-    stages{
+    stages {
         stage("Build & Test"){
             steps{
                 echo "========executing Build & Test========"
@@ -33,7 +33,7 @@ Pipeline{
             }
         }
     }
-    post{
+    post {
         always{
             echo "========always========"
         }
