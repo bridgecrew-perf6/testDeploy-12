@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-pipeline{
+Pipeline{
     agent: any
     options{
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '2')
