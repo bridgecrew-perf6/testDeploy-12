@@ -22,17 +22,17 @@ pipeline {
         }
         stage("Build Docker Image"){
             steps{
-                echo "====++++executing A++++===="
+                echo "====++++executing Build Docker Image++++===="
             }
         }
         stage('Push Image to ECR'){
             steps{
-                echo "====++++executing A++++===="
+                echo "====++++executing Push Image to ECR++++===="
             }
         }
-        stage("'Deploy in ECS"){
+        stage("Deploy in ECS"){
             steps{
-                echo "====++++executing A++++===="
+                echo "====++++executing Deploy in ECS++++===="
             }
         }
     }
