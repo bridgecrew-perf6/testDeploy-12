@@ -16,7 +16,7 @@ pipeline {
             steps{
                 echo "========Build & Test========"
                 withPythonEnv('/usr/bin/python3.2'){
-                    sh 'pip3 install -r ./requirements.txt'
+                    echo "Inside the env"
                 }
             }
         }
