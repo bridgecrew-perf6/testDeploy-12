@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage("Build & Test"){
             steps{
-                echo "========executing Build & Test========"
+                echo "========Build & Test========"
                 withPythonEnv('/usr/bin/python3.2'){
                     sh 'pip3 install -r ./requirements.txt'
                 }
