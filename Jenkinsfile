@@ -15,9 +15,6 @@ pipeline {
         stage("Build & Test"){
             steps{
                 echo "========Build & Test========"
-                withPythonEnv('/usr/bin/python3.2'){
-                    echo "Inside the env"
-                }
             }
         }
         stage("Build Docker Image"){
