@@ -1,41 +1,55 @@
 #!/usr/bin/env groovy
 
-pipeline{
-    agent{ }
-    options{
-        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '2')
-        disableConcurrentBuilds()
-        timeout(time: 1, unit: 'HOURS')
-        timestamps
+pipeline {
+    agent {
+        node {
+            label 'master'
+        }
     }
-    tools{}
-    environment{}
-    stages{
-        stage("Build & Test"){
+    environment {
+        registry = "villavelle101/maths"
+        registryCredentials = "dockerhub"
+        dockerImage = ""
+    }
+    stages {
+        stage("Build Application"){
             steps{
-                echo "========executing Build & Test========"
-                withPythonEnv('/usr/bin/python3.2'){
-                    sh 'pip3 install -r ./requirements.txt'
+                echo "======== Building Application ========"
+            }
+        }
+
+        stage("Test Application"){
+            steps{
+                echo "======== Testing Application ========"
+            }
+        }
+
+        stage("Build Docker Image"){
+            steps{
+                echo "====++++ Building  Docker Image++++===="
+                script {
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
             }
         }
-        stage("Build Docker Image"){
+        stage('Push Image to dockerhub'){
             steps{
-                echo "====++++executing A++++===="
+                echo "====++++ Push Image to ECR++++===="
+                script {
+                    docker.withRegistry('', registryCredentials){
+                        dockerImage.push()
+                    }
+                }
             }
         }
-        stage('Push Image to ECR'){
+        stage("Remove Unused docker image"){
             steps{
-                echo "====++++executing A++++===="
-            }
-        }
-        stage("'Deploy in ECS"){
-            steps{
-                echo "====++++executing A++++===="
+                echo "====++++ Remove unused docker image ++++===="
+                sh "docker rm $registry:$BUILD_NUMBER"
             }
         }
     }
-    post{
+    post {
         always{
             echo "========always========"
         }
