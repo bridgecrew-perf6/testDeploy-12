@@ -20,7 +20,7 @@ pipeline {
 
         stage("Test App"){
             steps{
-                echo "======== Test Application ========"
+                echo "======== Testing Application ========"
             }
         }
 
