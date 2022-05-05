@@ -8,7 +8,7 @@ pipeline {
     }
     environment {
         registry = "villavelle101/maths"
-        registryCredentials = "dockerhub"
+        registryCredentials = "DockerHubDetails"
         dockerImage = ""
     }
     stages {
