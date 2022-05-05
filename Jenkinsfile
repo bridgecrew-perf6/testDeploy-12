@@ -12,13 +12,13 @@ pipeline {
         dockerImage = ""
     }
     stages {
-        stage("Build Application"){
+        stage("Build App"){
             steps{
                 echo "======== Building Application ========"
             }
         }
 
-        stage("Test Application"){
+        stage("Test App"){
             steps{
                 echo "======== Testing Application ========"
             }
