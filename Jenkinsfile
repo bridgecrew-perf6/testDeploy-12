@@ -51,7 +51,7 @@ pipeline {
         stage("Trigger manifest update"){
             steps{
                 echo "====++++ Triggering manifest update ++++===="
-                build job: 'testDeployManiifest', parameters: [ string(name: DOCKERTAG, value: env.BUILD_NUMBER)]
+                build job: 'testDeployManiifest', parameters: [ string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
             }
         }
     }
