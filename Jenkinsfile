@@ -42,7 +42,7 @@ pipeline {
                 }
             }
         }
-        stage("Remove Unused docker image"){
+        stage("Removing Unused docker image"){
             steps{
                 echo "====++++ Remove unused docker image ++++===="
                 sh "docker image rm $registry:$BUILD_NUMBER"
