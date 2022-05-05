@@ -49,8 +49,10 @@ pipeline {
             }
         }
         stage("Trigger manifest update"){
-            echo "====++++ Triggering manifest update ++++===="
-            build job: 'testDeployManiifest', parameters: [ string(name: DOCKERTAG, value: env.BUILD_NUMBER)]
+            steps{
+                echo "====++++ Triggering manifest update ++++===="
+                build job: 'testDeployManiifest', parameters: [ string(name: DOCKERTAG, value: env.BUILD_NUMBER)]
+            }
         }
     }
     post {
