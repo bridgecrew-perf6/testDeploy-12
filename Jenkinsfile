@@ -34,7 +34,7 @@ pipeline {
         }
         stage('Push Image to dockerhub'){
             steps{
-                echo "====++++ Image to dockerHub++++===="
+                echo "====++++ Push Image to dockerHub++++===="
                 script {
                     docker.withRegistry('', registryCredentials){
                         dockerImage.push()
