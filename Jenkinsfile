@@ -36,7 +36,7 @@ pipeline {
             steps{
                 echo "====++++ Push Image to ECR++++===="
                 script {
-                    docker.withRegistry('', registryCredentials){
+                    docker.withRegistry('https://hub.docker.com/', registryCredentials){
                         dockerImage.push()
                     }
                 }
