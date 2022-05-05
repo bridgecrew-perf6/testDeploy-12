@@ -32,7 +32,7 @@ pipeline {
                 }
             }
         }
-        stage('Push Image to dockerhub'){
+        stage('Pushing Image to dockerhub'){
             steps{
                 echo "====++++ Pushing Image to dockerHub++++===="
                 script {
