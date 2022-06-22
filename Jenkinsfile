@@ -48,7 +48,7 @@ pipeline {
                 sh "docker image rm $registry:$BUILD_NUMBER"
             }
         }
-        stage("Test manifest update"){
+        stage("Testing manifest update"){
             steps{
                 echo "====++++ Trigger manifest update ++++===="
                 build job: 'appKustomizeDeployManifest', parameters: [ string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
