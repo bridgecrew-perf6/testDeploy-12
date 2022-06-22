@@ -51,19 +51,8 @@ pipeline {
         stage("Test manifest update"){
             steps{
                 echo "====++++ Trigger manifest update ++++===="
-                build job: 'testDeployManiifest', parameters: [ string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
+                build job: 'appKustomizeDeployManifest', parameters: [ string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
             }
-        }
-    }
-    post {
-        always{
-            echo "========always========"
-        }
-        success{
-            echo "========pipeline executed successfully ========"
-        }
-        failure{
-            echo "========pipeline execution failed========"
         }
     }
 }
